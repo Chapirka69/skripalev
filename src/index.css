@@ -1,0 +1,162 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Montserrat", ui-sans-serif, system-ui, sans-serif;
+
+  --color-wood: #d4b896;
+  --color-wood-light: #e8d4bc;
+  --color-forest: #6b8e6f;
+  --color-forest-dark: #4a6b4e;
+  --color-terracotta: #e5a77e;
+  --color-cream: #faf7f2;
+  --color-cream-dark: #f0ebe3;
+  --color-ink: #2c2c2c;
+  --color-ink-dark: #1f1f1f;
+  --color-link: #3d6b44;
+  --color-link-hover: #2d5233;
+
+  --color-primary: var(--color-forest);
+  --color-primary-foreground: #ffffff;
+  --color-secondary: var(--color-wood-light);
+  --color-secondary-foreground: var(--color-ink-dark);
+  --color-background: #ffffff;
+  --color-foreground: var(--color-ink);
+  --color-muted: var(--color-cream);
+  --color-muted-foreground: #5a5a5a;
+  --color-border: #e8e2d9;
+  --color-ring: var(--color-forest);
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+
+  --spacing-section-y: 4rem;
+  --spacing-section-y-md: 5rem;
+  --spacing-block: 2.5rem;
+  --spacing-block-md: 3rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background font-sans text-ink antialiased;
+  }
+
+  body.menu-open {
+    overflow: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply text-ink-dark tracking-tight;
+  }
+
+  a:not([class*="rounded"]):not([data-slot="button"]) {
+    @apply transition-colors;
+  }
+}
+
+@layer components {
+  .section-inner {
+    @apply mx-auto max-w-7xl px-4 md:px-6 lg:px-8;
+  }
+
+  .section-hero {
+    @apply pt-10 pb-12 md:pt-14 md:pb-16 lg:pt-16 lg:pb-20;
+  }
+
+  .section-block {
+    @apply py-10 md:py-14 lg:py-16;
+  }
+
+  .section-block-tight {
+    @apply py-8 md:py-12;
+  }
+
+  .section-cta {
+    @apply pt-2 pb-8 md:pt-4 md:pb-10;
+  }
+
+  .section-block-last {
+    @apply !pb-6 md:!pb-8;
+  }
+
+  .section-content {
+    @apply mt-8 md:mt-10;
+  }
+
+  .section-after-actions {
+    @apply mt-8 md:mt-10;
+  }
+
+  .card-grid {
+    @apply grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5;
+  }
+}
+
+@layer utilities {
+  .animate-fade-up {
+    animation: fade-up 0.7s ease-out both;
+  }
+
+  .animate-fade-up-delay {
+    animation: fade-up 0.7s ease-out 0.15s both;
+  }
+
+  .animate-menu-slide {
+    animation: menu-slide-in 0.28s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .animate-menu-fade {
+    animation: menu-fade-in 0.2s ease-out both;
+  }
+
+  .menu-backdrop {
+    animation: menu-backdrop-in 0.25s ease-out both;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes menu-slide-in {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes menu-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes menu-backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
